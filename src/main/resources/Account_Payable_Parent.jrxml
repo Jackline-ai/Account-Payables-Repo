@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prescriptionParent" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="2abc81d8-70d0-4719-b1f6-226cb09b4a9a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="HEADER_DATASOURCE" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="VENDORS_ITEMS_DATASOURCE" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="ACCOUNT_PAYABLES_NET_DATASOURCE" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="20" y="0" width="200" height="39" uuid="7d915bd0-9388-4859-ac52-47a15d15ea93"/>
+				<dataSourceExpression><![CDATA[$P{HEADER_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["PayablesHeader.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="55">
+			<subreport>
+				<reportElement x="0" y="10" width="200" height="39" uuid="445e3cf4-8e0b-4198-9e41-fbb6de6a371b"/>
+				<dataSourceExpression><![CDATA[$P{VENDORS_ITEMS_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Account_Payables_Items.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="43">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="30" uuid="584ef981-a5d8-4cb6-8ba3-1be4b5d6f60c"/>
+				<dataSourceExpression><![CDATA[$P{ACCOUNT_PAYABLES_NET_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Account_Payables_Net.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="410" y="10" width="70" height="30" uuid="959f8bd5-cfad-4a72-aa6e-017d7e53858f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="480" y="10" width="70" height="30" uuid="7d6ad61c-8307-48b8-ac5a-801af4a48d11"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
